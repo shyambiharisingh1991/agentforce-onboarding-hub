@@ -80,6 +80,20 @@ docker compose up --build
 
 Docker Compose starts PostgreSQL, the API on port `4000`, and the web app on port `3000`.
 
+## Deploy web app to Vercel
+
+This repository includes `vercel.json` for the monorepo web app.
+
+Use these Vercel settings:
+
+- Framework Preset: `Next.js`
+- Root Directory: repository root
+- Install Command: `corepack enable && pnpm install --frozen-lockfile`
+- Build Command: `pnpm --filter @agentforce/web build`
+- Output Directory: `apps/web/.next`
+
+Do not set the output directory to `public`; this is a Next.js app, so Vercel should deploy the generated `.next` output.
+
 ## Useful scripts
 
 ```bash
