@@ -1,0 +1,22 @@
+{
+  "name": "agentforce-onboarding-hub",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Enterprise-grade open-source onboarding and ROI acceleration platform for Salesforce Agentforce implementations.",
+  "license": "MIT",
+  "packageManager": "pnpm@9.15.4",
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json,css,sql,yml,yaml}\"",
+    "db:seed": "psql \"$DATABASE_URL\" -f supabase/schema.sql -f supabase/seed.sql"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "prettier": "^3.4.2",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2"
+  }
+}

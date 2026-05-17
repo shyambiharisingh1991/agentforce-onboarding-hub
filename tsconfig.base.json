@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@agentforce/ui": ["packages/ui/src/index.tsx"],
+      "@agentforce/ai-engine": ["packages/ai-engine/src/index.ts"],
+      "@agentforce/checklist-engine": ["packages/checklist-engine/src/index.ts"],
+      "@agentforce/prompt-library": ["packages/prompt-library/src/index.ts"],
+      "@agentforce/analytics": ["packages/analytics/src/index.ts"]
+    }
+  }
+}
