@@ -3,11 +3,11 @@ import * as React from "react";
 type Tone = "default" | "success" | "warning" | "danger" | "info";
 
 const toneClasses: Record<Tone, string> = {
-  default: "border-slate-200 bg-white text-slate-900 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100",
-  success: "border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950 dark:text-emerald-200",
-  warning: "border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-200",
-  danger: "border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-900 dark:bg-rose-950 dark:text-rose-200",
-  info: "border-cyan-200 bg-cyan-50 text-cyan-800 dark:border-cyan-900 dark:bg-cyan-950 dark:text-cyan-200"
+  default: "border-slate-200 bg-white/80 text-slate-900 dark:border-white/10 dark:bg-white/[0.06] dark:text-slate-100",
+  success: "border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-400/20 dark:bg-emerald-400/10 dark:text-emerald-200",
+  warning: "border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-400/20 dark:bg-amber-400/10 dark:text-amber-200",
+  danger: "border-rose-200 bg-rose-50 text-rose-800 dark:border-rose-400/20 dark:bg-rose-400/10 dark:text-rose-200",
+  info: "border-cyan-200 bg-cyan-50 text-cyan-800 dark:border-cyan-400/20 dark:bg-cyan-400/10 dark:text-cyan-200"
 };
 
 function cx(...classes: Array<string | false | null | undefined>) {
@@ -24,9 +24,11 @@ export function Button({
   size?: "sm" | "md" | "lg";
 }) {
   const variants = {
-    primary: "bg-cyan-600 text-white shadow-sm hover:bg-cyan-700 focus-visible:ring-cyan-500",
-    secondary: "border border-slate-200 bg-white text-slate-900 hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100 dark:hover:bg-slate-900",
-    ghost: "text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-900",
+    primary:
+      "bg-cyan-600 text-white shadow-[0_14px_35px_-20px_rgba(8,145,178,0.8)] hover:bg-cyan-500 focus-visible:ring-cyan-500 dark:bg-cyan-400 dark:text-slate-950 dark:hover:bg-cyan-300",
+    secondary:
+      "border border-slate-200 bg-white/85 text-slate-900 shadow-sm hover:bg-white dark:border-white/10 dark:bg-white/[0.06] dark:text-slate-100 dark:shadow-none dark:hover:bg-white/[0.1]",
+    ghost: "text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/[0.08]",
     danger: "bg-rose-600 text-white hover:bg-rose-700 focus-visible:ring-rose-500"
   };
   const sizes = {
@@ -55,7 +57,7 @@ export function Card({
   return (
     <section
       className={cx(
-        "rounded-lg border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-950",
+        "rounded-lg border border-slate-200 bg-white/90 p-5 shadow-[0_20px_70px_-45px_rgba(15,23,42,0.55)] backdrop-blur dark:border-white/10 dark:bg-white/[0.055] dark:shadow-none",
         className
       )}
       {...props}
@@ -69,7 +71,7 @@ export function Badge({
   className
 }: React.PropsWithChildren<{ tone?: Tone; className?: string }>) {
   return (
-    <span className={cx("inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-medium", toneClasses[tone], className)}>
+    <span className={cx("inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-medium shadow-sm shadow-slate-950/5 dark:shadow-none", toneClasses[tone], className)}>
       {children}
     </span>
   );
@@ -93,8 +95,8 @@ export function Progress({
           <span>{safeValue}%</span>
         </div>
       ) : null}
-      <div className="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
-        <div className="h-full rounded-full bg-cyan-600 transition-all" style={{ width: `${safeValue}%` }} />
+      <div className="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-white/10">
+        <div className="h-full rounded-full bg-cyan-600 transition-all dark:bg-cyan-300" style={{ width: `${safeValue}%` }} />
       </div>
     </div>
   );
@@ -132,7 +134,7 @@ export function EmptyState({
   action?: React.ReactNode;
 }) {
   return (
-    <div className="rounded-lg border border-dashed border-slate-300 bg-slate-50 p-8 text-center dark:border-slate-700 dark:bg-slate-900">
+    <div className="rounded-lg border border-dashed border-slate-300 bg-slate-50/80 p-8 text-center dark:border-white/15 dark:bg-white/[0.04]">
       <h3 className="text-base font-semibold text-slate-950 dark:text-white">{title}</h3>
       <p className="mx-auto mt-2 max-w-xl text-sm text-slate-600 dark:text-slate-300">{body}</p>
       {action ? <div className="mt-5">{action}</div> : null}
